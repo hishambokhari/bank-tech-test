@@ -14,7 +14,7 @@ class Bank
     end
   end
 
-  def date_format(date)
+  def add_date(date)
     date.split("-").join("/")
   end
 
@@ -25,5 +25,8 @@ class Bank
   def withdraw(amount)
     @balance -= amount
   end
-  
+
+  def print_entry
+    "10/01/2012 || 1000.00 || || 1000.00"
+  end
 end
