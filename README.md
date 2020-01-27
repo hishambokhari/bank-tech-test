@@ -52,11 +52,15 @@ I would like to make a bank account
 
 As a user, 
 so I can store money,
-I would like to make a deposit into my bank account
+I would like to make a deposit of 1000 into my bank account on 10-01-2012
+
+As a user, 
+so I can store money,
+I would like to make a deposit of 2000 into my bank account on 13-01-2012
 
 As a user, 
 so I can spend money,
-I would like to make a withdrawal from my bank account
+I would like to make a withdrawal of 500 from my bank account on 14-01-2012
 
 As a user, 
 so that I can see a statement of all my transactions,
