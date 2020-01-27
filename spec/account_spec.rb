@@ -30,9 +30,10 @@ describe Bank do
   end
 
   describe '#balance' do
-    it 'returns the current balance' do
+    it 'returns the current balance when an amount is deposited to it' do
       subject.deposit(1000)
-      expect(subject.balance).to eq 1000
+      subject.deposit(2000)
+      expect(subject.balance).to eq 3000
     end
   end
 end
