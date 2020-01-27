@@ -31,6 +31,15 @@ describe Bank do
       expect(subject.balance).to eq 3000
     end
   end
+
+  describe '#withdraw' do
+    it 'takes out a given amount, returning the total balance remaining' do
+      subject.deposit(1000)
+      subject.deposit(2000)
+      subject.withdraw(500)
+      expect(subject.balance).to eq 2500
+    end
+  end
 end
 
 
