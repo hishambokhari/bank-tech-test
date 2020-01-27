@@ -41,6 +41,14 @@ describe Bank do
     end
   end
 
+  describe '#current_deposit' do
+    it 'returns the last deposit made' do
+      subject.deposit(1000)
+      subject.deposit(2000)
+      expect(subject.last_deposit).to eq 2000
+    end
+  end
+
   describe '#print_entry' do
     it 'displays an entry in the correct format' do
       subject.deposit(1000)
