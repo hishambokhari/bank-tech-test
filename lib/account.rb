@@ -1,11 +1,12 @@
 class Bank
 
-  attr_reader :balance, :last_deposit, :last_date
+  attr_reader :balance, :last_deposit, :last_date, :entries
 
   def initialize
     @balance = 0
     @last_deposit = 0
     @last_date = nil
+    @entries = []
   end
 
   def money_format(amount)
@@ -14,6 +15,10 @@ class Bank
     else
       sprintf("%.2f", amount)
     end
+  end
+
+  def confirm
+    @entries << display_entry
   end
 
   def add_date(date)
@@ -36,7 +41,7 @@ class Bank
 
   def print_statement
     print header
-    puts display_entry
+    puts @entries.reverse
   end
 
   private
