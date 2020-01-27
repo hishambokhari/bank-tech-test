@@ -14,6 +14,13 @@ describe '#deposit_display' do
   end
 end
 
+describe '#date_display' do
+  it 'displays the date in the correct format' do
+    expect(date_display("10-01-2012")).to eq "10/01/2012"
+    expect(date_display("13-01-2012")).to eq "13/01/2012"
+  end
+end
+
 
 
 
