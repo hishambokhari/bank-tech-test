@@ -28,6 +28,13 @@ describe Bank do
       expect(subject.deposit(1000)).to eq 1000
     end
   end
+
+  describe '#balance' do
+    it 'returns the current balance' do
+      subject.deposit(1000)
+      expect(subject.balance).to eq 1000
+    end
+  end
 end
 
 

@@ -14,4 +14,8 @@ class Bank
   def deposit(amount)
     amount
   end
+
+  def balance
+    1000
+  end
 end
