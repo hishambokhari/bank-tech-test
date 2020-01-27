@@ -44,29 +44,4 @@ date || credit || debit || balance
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
 
-User Stories:
-
-As a user, 
-so I can keep a check on my money,
-I would like to make a bank account
-
-As a user, 
-so I can store money,
-I would like to make a deposit of 1000 into my bank account on 10-01-2012
-
-As a user, 
-so I can store money,
-I would like to make a deposit of 2000 into my bank account on 13-01-2012
-
-As a user, 
-so I can spend money,
-I would like to make a withdrawal of 500 from my bank account on 14-01-2012
-
-As a user, 
-so that I can see a statement of all my transactions,
-I would like to print a bank statement
-
-As a user, 
-so that I can track my bills/payments/spending,
-I would like to see the date, amount in/out and my balance for each transaction on my bank statement.
 
