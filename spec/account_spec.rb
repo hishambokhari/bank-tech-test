@@ -1,14 +1,12 @@
 require 'account'
 describe Bank do
   
-  describe '#deposit_display' do
+  describe '#money_format' do
     it 'displays a given amount in the correct format' do
-      expect(subject.money_format(3000)).to eq "3000.00"
-      expect(subject.money_format(100.53)).to eq "100.53"
-    end
-
-    it 'throws an error if the amount is an invalid amount' do
-      expect(subject.money_format(-2000)).to eq "Error: Invalid amount"
+      subject.deposit(3000)
+      subject.add_date("10-01-2012")
+      subject.confirm
+      expect(subject.entries[0]).to include "3000.00"
     end
   end
 
@@ -30,6 +28,14 @@ describe Bank do
       subject.deposit(2000)
       expect(subject.balance).to eq 3000
     end
+
+    it 'raises an if given amount is an invalid amount' do
+      expect{subject.deposit(-3000)}.to raise_error("Error: Invalid amount")
+    end
+
+    it 'raises an error if given amount is incorrect format' do
+      expect{subject.deposit("3000")}.to raise_error("Error: Incorrect format")
+    end
   end
 
   describe '#withdraw' do
@@ -39,6 +45,15 @@ describe Bank do
       subject.withdraw(500)
       expect(subject.balance).to eq 2500
     end
+
+    it 'raises an if given amount is an invalid amount' do
+      expect{subject.withdraw(-3000)}.to raise_error("Error: Invalid amount")
+    end
+
+    it 'raises an error if given amount is incorrect format' do
+      expect{subject.withdraw("3000")}.to raise_error("Error: Incorrect format")
+    end
+
   end
 
   describe '#last_deposit' do
@@ -49,29 +64,33 @@ describe Bank do
     end
   end
 
-  describe '#print_last_entry' do
-    it 'displays an entry in the correct format' do
+  describe '#last_date' do
+  it 'displays the latest entry date' do
+    subject.deposit(1000)
+    subject.add_date("10/01/2012")
+    subject.deposit(2000)
+    subject.add_date("13/01/2012")
+    expect(subject.last_date).to eq "13/01/2012"
+  end
+end
+
+  describe '#display_entry' do
+    it 'displays a deposit entry in the correct format' do
       subject.deposit(1000)
       subject.add_date("10-01-2012")
-      expect(subject.display_entry).to eq "10/01/2012 || 1000.00 || || 1000.00"
+      subject.confirm
+      expect(subject.entries).to include "10/01/2012 || 1000.00 || || 1000.00"
     end
 
-    it 'displays an entry in the correct format' do
+    it 'displays a withdrawal entry in the correct format' do
       subject.deposit(2000)
       subject.add_date("13-01-2012")
-      expect(subject.display_entry).to eq "13/01/2012 || 2000.00 || || 2000.00"
+      subject.confirm
+      expect(subject.entries).to include "13/01/2012 || 2000.00 || || 2000.00"
     end
   end
 
-  describe '#last_date' do
-    it 'displays the latest entry date' do
-      subject.deposit(1000)
-      subject.add_date("10/01/2012")
-      subject.deposit(2000)
-      subject.add_date("13/01/2012")
-      expect(subject.last_date).to eq "13/01/2012"
-    end
-  end
+ 
 
   describe '#confirm' do
     it 'saves the deposit and date as an entry' do
