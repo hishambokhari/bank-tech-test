@@ -25,7 +25,11 @@ describe Bank do
   describe '#balance' do
     it 'returns the current balance when an amount is deposited to it' do
       subject.deposit(1000)
+      subject.add_date("10-01-2012")
+      subject.confirm
       subject.deposit(2000)
+      subject.add_date("13-01-2012")
+      subject.confirm
       expect(subject.balance).to eq 3000
     end
 
@@ -36,13 +40,20 @@ describe Bank do
     it 'raises an error if given amount is incorrect format' do
       expect{subject.deposit("3000")}.to raise_error("Error: Incorrect format")
     end
+
   end
 
   describe '#withdraw' do
     it 'takes out a given amount, returning the total balance remaining' do
       subject.deposit(1000)
+      subject.add_date("10-01-2012")
+      subject.confirm
       subject.deposit(2000)
+      subject.add_date("13-01-2012")
+      subject.confirm
       subject.withdraw(500)
+      subject.add_date("14-01-2012")
+      subject.confirm
       expect(subject.balance).to eq 2500
     end
 
